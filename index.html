@@ -11,11 +11,8 @@
 <header>
     <h1>Weather Dashboard</h1>
 </header>
-<main class="container col-sm-7">
-    <div class="row border border-dark mx-auto current-city"></div>
-    <div class="row border border-dark mx-auto forecast"></div>
-</main>
-<aside class="col-sm-3 border border-dark">
+
+<aside class="col-sm-3 float-left border border-dark">
     <form>
         <label for="citySearch">Search for a City:</label>
         <br>
@@ -23,6 +20,30 @@
         <button type="submit"><i class="fa fa-search"></i></button>
     </form>
 </aside>
+
+<main class="float-right container col-sm-7">
+    <div class="row border border-dark mx-auto current-city"></div>
+    
+</main>
+
+<div class="clo-sm-7 float-right row border border-dark mx-auto forecast">
+    <div class="col-2 day2">
+        <ul style="list-style-type:none;" class="day2weather"></ul>
+    </div>
+    <div class="col-2 day3">
+        <ul style="list-style-type:none;" class="day3weather"></ul>
+    </div>
+    <div class="col-2 day4">
+        <ul style="list-style-type:none;" class="day4weather"></ul>
+    </div>
+    <div class="col-2 day5">
+        <ul style="list-style-type:none;" class="day5weather"></ul>
+    </div>
+    <div class="col-2 day6">
+        <ul style="list-style-type:none;" class="day6weather"></ul>
+    </div>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript"></script>
