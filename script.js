@@ -1,12 +1,18 @@
 // var to get the current date
 var today = new Date();
 var currentDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+// empty array
 var cities = [];
+// get array from local storage
 var cities = [JSON.parse(localStorage.getItem("cities"))];
 
 // event listener for the submit button
-$("button").on("click", function (e) {
+$("button").on("click", function (e) { 
+  // stop the page from navigating away
+  e.preventDefault();
   generateWeather();
+  });
+  // function to generate weather
   function generateWeather() {
     // var for the div called currentCity and for one called forecast
     var currentCity = $(".current-city");
@@ -19,7 +25,7 @@ $("button").on("click", function (e) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
     console.log(city);
 
-    //  emptying the current city div
+    //  emptying relevant divs
     $(currentCity).empty();
     $(".savedBtns").empty();
     $("h4").remove();
@@ -28,11 +34,9 @@ $("button").on("click", function (e) {
     $(".day4weather").empty();
     $(".day5weather").empty();
     $(".day6weather").empty();
-    // stop the page from navigating away
-    e.preventDefault();
-    // the ajax call
-
-
+   
+    
+    // the first ajax call for current weather
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -47,12 +51,12 @@ $("button").on("click", function (e) {
       $(weatherList).append($("<li>").text("Humidity: " + (response.main.humidity) + "%"));
       $(weatherList).append($("<li>").text("Wind Speed: " + (response.wind.speed) + "MPH"));
 
-
+      // for loop to create buttons from the saved data in the local storage
       for (let i = 0; i < cities.length; i++) {
         $(".savedBtns").append($("<li>").append($("<button>").text(cities[i])));
       };
 
-
+      // ajax call for the 5 day forecast
       $.ajax({
         url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey,
         method: "GET"
@@ -81,29 +85,15 @@ $("button").on("click", function (e) {
         $(".day6weather").append($("<li>").text("humidity: " + forecastDays.list[35].main.humidity + "%"));
       });
 
-
-
-
-
-
-
-
-      // array to store all searched for cities
-      // var cities = [];
-      console.log(cities);
-
       // add current city to array
       cities.push(city);
       console.log(cities);
       // store the array to local storage
       localStorage.setItem("cities", JSON.stringify(cities));
-
-
-
     });
   }
-});
 
+// attempt at giving the buttons the function of bringing up the info of the city stated
 $(".savedBtns").on("click", function (ev) {
   ev.preventDefault();
   var city = $(this).text();
