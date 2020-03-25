@@ -81,6 +81,7 @@ function generateWeather() {
 
       // adding the date of the next day in the forecast, removing the time from the title
       $(".day2").append($("<p>").text((forecastDays.list[4].dt_txt).slice(0,10)));
+      // get icon from forecastDays data
       $(".day2").append($("img>").attr({
           class: "icon col-2",
           src: "http://openweathermap.org/img/w/" + forecastDays.list[4].weather[0].icon + ".png",
@@ -128,8 +129,12 @@ function generateWeather() {
   }
   forcast();
 
+  if(cities.includes(city)){
+    buttonList();
+  }else{
     // add current city to array
     cities.push(city);
+  }
     console.log(cities);
     // store the array to local storage
     localStorage.setItem("cities", JSON.stringify(cities));
@@ -140,6 +145,8 @@ function generateWeather() {
 // attempt at giving the buttons the function of bringing up the info of the city stated
 $(".savedBtns").on("click", function (ev) {
   ev.preventDefault();
+  console.log(ev);
   var city = $(this).text();
   generateWeather();
 });
+// }});
