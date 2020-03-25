@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-<header>
-    <h1>Weather Dashboard</h1>
-</header>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
 
-<aside class="col-sm-3 float-left border border-dark">
-    <form>
-        <label for="citySearch">Search for a City:</label>
-        <br>
-        <input type="text" id="search" placeholder="City Name">
-        <button type="submit"><i class="fa fa-search"></i></button>
-        <ul class="savedBtns"></ul>
-    </form>
-</aside>
+    <aside class="col-sm-3 float-left border border-dark">
+        <form>
+            <label for="citySearch">Search for a City:</label>
+            <br>
+            <input type="text" id="search" placeholder="City Name">
+            <button type="submit"><i class="fa fa-search"></i></button>
+            <ul class="savedBtns"></ul>
+        </form>
+    </aside>
 
-<main class="float-right container col-sm-7">
-    <div class="row border border-dark mx-auto current-city"></div>
-    
-</main>
-
-<div class="clo-sm-7 float-right row border border-dark mx-auto forecast">
-    <div class="col-2 day2">
-        <ul style="list-style-type:none;" class="day2weather"></ul>
-    </div>
-    <div class="col-2 day3">
-        <ul style="list-style-type:none;" class="day3weather"></ul>
-    </div>
-    <div class="col-2 day4">
-        <ul style="list-style-type:none;" class="day4weather"></ul>
-    </div>
-    <div class="col-2 day5">
-        <ul style="list-style-type:none;" class="day5weather"></ul>
-    </div>
-    <div class="col-2 day6">
-        <ul style="list-style-type:none;" class="day6weather"></ul>
-    </div>
-</div>
+    <main class="container col-sm-7">
+        <div class="row border border-dark mx-auto current-city"></div>
+        <div class="row forecast-title card-title"></div>
+        <div class="row mx-auto forecast">
+            <div class="col-2 day2 card bg-primary"></div>
+            <div class="col-2 day3 card bg-primary"></div>
+            <div class="col-2 day4 card bg-primary"></div>
+            <div class="col-2 day5 card bg-primary"></div>
+            <div class="col-2 day6 card bg-primary"></div>
+        </div>
+    </main>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript"></script>
-<script src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript"></script>
+        <script src="script.js"></script>
 </body>
+
 </html>
