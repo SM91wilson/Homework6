@@ -2,8 +2,8 @@
 var today = new Date();
 var currentDate = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 // get array from local storage
-// var cities = [JSON.parse(localStorage.getItem("cities"))];
- // my api key
+var cities = [JSON.parse(localStorage.getItem("cities"))];
+// my api key
 var APIKey = "ab35b7ff4acffaadd63092658010c663";
 // setting the city search var
 var city = $("#search").val();
@@ -14,6 +14,8 @@ $("button").on("click", function (e) {
   e.preventDefault();
   // run function to generate weather data
   generateWeather();
+  // run function to generate buttons
+  // buttonList();
 
 // function to generate weather
 function generateWeather() {
@@ -30,12 +32,11 @@ function generateWeather() {
   $(currentCity).empty();
   $(".savedBtns").empty();
   $("h4").remove();
-  $(".day2weather").empty();
-  $(".day3weather").empty();
-  $(".day4weather").empty();
-  $(".day5weather").empty();
-  $(".day6weather").empty();
-
+  $(".day2").empty();
+  $(".day3").empty();
+  $(".day4").empty();
+  $(".day5").empty();
+  $(".day6").empty();
 
   // the first ajax call for current weather
   $.ajax({
@@ -62,12 +63,11 @@ function generateWeather() {
     $(weatherStats).append($("<p>").text("Wind Speed: " + (response.wind.speed) + "MPH"));
 
     // for loop to create buttons from the saved data in the local storage
-    // function buttonList(){
-    // $(".savedBtns").empty();
-    // // for (let i = 0; i < cities.length; i++) {
-    // //   $(".savedBtns").append($("<li>").append($("<button>").text(cities[i])));
-    // // };
-    // // }
+    function buttonList(){
+    for (let i = 1; i < cities.length; i++) {
+      $(".savedBtns").append($("<li>").append($("<button>").text(cities[i])));
+    };
+    }
 
     // ajax call for the 5 day forecast
     function forcast(){
@@ -133,6 +133,7 @@ function generateWeather() {
     console.log(cities);
     // store the array to local storage
     localStorage.setItem("cities", JSON.stringify(cities));
+    buttonList();
   });
 }});
 
